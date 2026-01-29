@@ -1,0 +1,7 @@
+[project]
+name = "tmdb-cli"
+version = "0.1.0"
+dependencies = ["requests", "python-dotenv"]
+
+[project.scripts]
+tmdb-app = "tmdb_cli.cli:main"
