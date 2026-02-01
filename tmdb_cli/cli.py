@@ -11,6 +11,14 @@ def main():
     )
     args = parser.parse_args()
 
-    movies = fetch_movies(args.type)
-    for movie in movies:
-        print(f"{movie['title']} ({movie['release_date']}) - Rating: {movie['vote_average']}")
+    try:
+        movies = fetch_movies(args.type)
+    except Exception as e:
+        print(f"Error: {e}")
+        return
+
+    for movie in movies[:10]:
+        title = movie.get("title", "Unknown title")
+        release_date = movie.get("release_date", "Unknown date")
+        rating = movie.get("vote_average", "N/A")
+        print(f"{title} ({release_date}) - Rating: {rating}")

@@ -15,8 +15,8 @@ TYPE_TO_ENDPOINT = {
 }
 
 def fetch_movies(movie_type: str):
-    if API_KEY is None:
-        raise RuntimeError("TMDB_API_KEY not set in environment")
+    if not API_KEY:
+        raise RuntimeError("TMDB_API_KEY is missing. Set it in your .env file.")
 
     endpoint = TYPE_TO_ENDPOINT[movie_type]
     url = f"{BASE_URL}/{endpoint}"
